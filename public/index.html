@@ -2633,7 +2633,7 @@
         // --- Google Apps Script Communication (Vercel Hybrid) ---
         // ส่ง HTTP POST ไปยัง GAS Web App URL แทน google.script.run
         function runGAS(functionName, ...args) {
-            if (!GAS_URL || GAS_URL === 'YOUR_GAS_URL') {
+            if (!GAS_URL || GAS_URL === 'https://script.google.com/macros/s/AKfycbwtnfYjlEAloUtZt5cvblr_6hUAgaVx4hYzff86RmkjjDRgGFbIM_43jnJnFkIn4eq8eQ/exec') {
                 return Promise.reject(new Error('กรุณาตั้งค่า GAS_URL ใน index.html'));
             }
             return fetch(GAS_URL, {
@@ -4102,7 +4102,7 @@ function sumInitTab() {
 }
 
 // ─── CONFIG ─────────────────────────────────────────────────
-const GAS_URL = 'YOUR_GAS_URL'; // ← ใส่ Web App URL ที่นี่ เช่น https://script.google.com/macros/s/XXXX/exec
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwtnfYjlEAloUtZt5cvblr_6hUAgaVx4hYzff86RmkjjDRgGFbIM_43jnJnFkIn4eq8eQ/exec'; // ← ใส่ Web App URL ที่นี่ เช่น https://script.google.com/macros/s/XXXX/exec
 
 // ─── DEPARTMENTS ────────────────────────────────────────────
 const DEPTS = {
@@ -4376,7 +4376,7 @@ function sfSaveForm() {
         hasSummary: false
     };
     Swal.fire({ title: 'กำลังบันทึก...', allowOutsideClick: false, didOpen: function() { Swal.showLoading(); } });
-    if (GAS_URL && GAS_URL !== 'YOUR_GAS_URL') {
+    if (GAS_URL && GAS_URL !== 'https://script.google.com/macros/s/AKfycbwtnfYjlEAloUtZt5cvblr_6hUAgaVx4hYzff86RmkjjDRgGFbIM_43jnJnFkIn4eq8eQ/exec') {
         var filesToUpload = sfUploadedFiles.map(function(f) {
             return { name: f.name, mimeType: f.type, base64: f.dataUrl };
         });
@@ -4604,7 +4604,7 @@ function sfDeleteFile(fileId) {
             cancelButtonText: 'ยกเลิก'
         }).then(function(r) {
             if (r.isDismissed) return;
-            if (r.isConfirmed && GAS_URL && GAS_URL !== 'YOUR_GAS_URL') {
+            if (r.isConfirmed && GAS_URL && GAS_URL !== 'https://script.google.com/macros/s/AKfycbwtnfYjlEAloUtZt5cvblr_6hUAgaVx4hYzff86RmkjjDRgGFbIM_43jnJnFkIn4eq8eQ/exec') {
                 var idToDelete = String(file.driveId).trim();
                 runGAS('deleteDriveFile', idToDelete)
                     .then(function(res) {
@@ -4661,7 +4661,7 @@ function sfRenderFileList() {
 function sfBackfillFileUrls() {
     var btn = document.getElementById('btn-backfill-urls');
 
-    if (!GAS_URL || GAS_URL === 'YOUR_GAS_URL') {
+    if (!GAS_URL || GAS_URL === 'https://script.google.com/macros/s/AKfycbwtnfYjlEAloUtZt5cvblr_6hUAgaVx4hYzff86RmkjjDRgGFbIM_43jnJnFkIn4eq8eQ/exec') {
         Swal.fire({ icon: 'info', title: 'ยังไม่ได้ตั้งค่า GAS_URL', text: 'กรุณาใส่ GAS Web App URL ใน index.html', confirmButtonColor: '#1e3a8a' });
         return;
     }
@@ -4731,7 +4731,7 @@ function sfLoadRecentRecords() {
 
     var done = function() { clearTimeout(timeoutId); };
 
-    if (GAS_URL && GAS_URL !== 'YOUR_GAS_URL') {
+    if (GAS_URL && GAS_URL !== 'https://script.google.com/macros/s/AKfycbwtnfYjlEAloUtZt5cvblr_6hUAgaVx4hYzff86RmkjjDRgGFbIM_43jnJnFkIn4eq8eQ/exec') {
         runGAS('getRecentRecords', 15)
             .then(function(result) {
                 done();
@@ -5049,7 +5049,7 @@ function hm5LoadData() {
         }
     }, 15000);
 
-    if (GAS_URL && GAS_URL !== 'YOUR_GAS_URL') {
+    if (GAS_URL && GAS_URL !== 'https://script.google.com/macros/s/AKfycbwtnfYjlEAloUtZt5cvblr_6hUAgaVx4hYzff86RmkjjDRgGFbIM_43jnJnFkIn4eq8eQ/exec') {
         runGAS('getAllTrainingData')
             .then(function(result) {
                 clearTimeout(timeoutId);
@@ -5935,7 +5935,7 @@ function saveEditRecord() {
 
     Swal.fire({ title: 'กำลังบันทึก...', allowOutsideClick: false, didOpen: function() { Swal.showLoading(); } });
 
-    if (GAS_URL && GAS_URL !== 'YOUR_GAS_URL') {
+    if (GAS_URL && GAS_URL !== 'https://script.google.com/macros/s/AKfycbwtnfYjlEAloUtZt5cvblr_6hUAgaVx4hYzff86RmkjjDRgGFbIM_43jnJnFkIn4eq8eQ/exec') {
         runGAS('updateTrainingRequest', updates, filesToUpload)
             .then(function(res) {
                 if (res && res.success) {
@@ -6965,7 +6965,7 @@ function trackLearnClick(linkId) {
       span.textContent = (cur + 1) + ' คน';
     }
   }
-  if (GAS_URL && GAS_URL !== 'YOUR_GAS_URL') {
+  if (GAS_URL && GAS_URL !== 'https://script.google.com/macros/s/AKfycbwtnfYjlEAloUtZt5cvblr_6hUAgaVx4hYzff86RmkjjDRgGFbIM_43jnJnFkIn4eq8eQ/exec') {
     runGAS('trackLinkClick', linkId).catch(function() {});
   }
 }
@@ -6974,7 +6974,7 @@ function trackLearnClick(linkId) {
 var _viewCountsLoaded = false;
 function loadLearnViewCounts() {
   if (_viewCountsLoaded) return;
-  if (GAS_URL && GAS_URL !== 'YOUR_GAS_URL') {
+  if (GAS_URL && GAS_URL !== 'https://script.google.com/macros/s/AKfycbwtnfYjlEAloUtZt5cvblr_6hUAgaVx4hYzff86RmkjjDRgGFbIM_43jnJnFkIn4eq8eQ/exec') {
     runGAS('getLinkViews')
       .then(function(data) {
         if (!data) return;
